@@ -1,0 +1,44 @@
+<button pButton icon="pi pi-plus"
+        class="p-button-rounded p-button-secondary p-button-outlined" styleClass="p-button-lg"></button>
+
+<ng-container *ngIf="(seatsRequest$ | async) as seats">
+
+  <p-table #dt [value]="seats"
+           styleClass="p-datatable-striped"
+           [tableStyle]="{'min-width': '50rem'}"
+           [rows]="10" [showCurrentPageReport]="true"
+           [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th *ngFor="let col of columns">
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-seats #my>
+      <tr>
+        <th *ngFor="let col of columns">
+          {{seats[col.field] || ''}}
+        <td>
+          <button pButton
+                  class='p-button-rounded p-button-danger p-button-text' icon="pi pi-trash" styleClass="p-button-lg"
+                  (click)="deleteSeats(seats.aircraft_code, seats.seat_no)"></button>
+          <button pButton icon="pi pi-user-edit"
+                  class="p-button-rounded p-button-help p-button-text" styleClass="p-button-lg"
+                  (click)="openEditor(editMode,seats.aircraft_code, seats.seat_no)"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</ng-container>
+
+<!--    <p-dialog [(visible)]="displayModal" [style]="{width: '450px'}" header="Searching seats" [modal]="true"-->
+<!--              [style]="{width: '50vw', height: '50vw', backgroundColor: 'rgb(211,211,211)'}">-->
+<!--      <ng-template pTemplate="content">-->
+<!--        <div class="field">-->
+<!--          <label for="name">SeatsInterfaceComponent name</label>-->
+<!--          <input type="text" pInputText id="name"  required autofocus/>-->
+<!--        </div>-->
+<!--      </ng-template>-->
+<!--    </p-dialog>-->

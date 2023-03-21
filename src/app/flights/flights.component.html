@@ -1,0 +1,72 @@
+<div class="tbar">
+  <p-toolbar>
+    <div class="p-toolbar-group-start">
+    </div>
+    <div class="p-toolbar-group-end">
+      <button pButton type="button" (click)="addOrEdit()"  label="Добавить полет"  class="p-button-success saveB"></button>
+    </div>
+  </p-toolbar>
+</div>
+
+<div class="card">
+  <ng-container *ngIf="(flightsRequest$ | async) as ENTRIES">
+    <p-table [value]="ENTRIES" sortField="all_the_way" sortMode="single" dataKey="all_the_way" rowGroupMode="subheader" groupRowsBy="all_the_way" responsiveLayout="scroll">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Номер рейса</th>
+          <th>Вылет из аэропорта</th>
+          <th>Время вылета</th>
+          <th>Прибытие в аэропорт</th>
+          <th>Время прибытия</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="groupheader" let-flight let-rowIndex="rowIndex" let-expanded="expanded">
+        <tr>
+          <td colspan="7">
+            <div class="flex justify-content-between flex-wrap card-container purple-container">
+              <div>
+                <button type="button" pButton pRipple [pRowToggler]="flight" class="p-button-text p-button-rounded p-button-plain p-mr-2" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                <span class="p-text-bold p-ml-2 ">{{flight.all_the_way}}</span>
+              </div>
+
+            </div>
+
+
+
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="rowexpansion" let-flight>
+        <tr>
+          <td>
+            {{flight.flight_no}}
+          </td>
+          <td>
+            {{flight.departure_airport}}
+          </td>
+          <td>
+            {{flight.scheduled_departure}}
+          </td>
+          <td>
+            {{flight.arrival_airport}}
+          </td>
+          <td>
+            {{flight.scheduled_arrival}}
+          </td>
+          <td>
+            <button pButton type="button" (click)="delete(flight.flight_id)" icon="pi pi-trash" class="mr-3 p-button-danger p-button-raised p-button-rounded"></button>
+          </td>
+          <td>
+            <button pButton type="button" (click)="addOrEdit(flight)" icon="pi pi-info-circle" label="Изменить" class="p-button-secondary p-button-rounded"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+  </ng-container>
+
+</div>
+
+

@@ -1,0 +1,98 @@
+<div *ngIf="flagForm; else unset" class="card">
+  <div class="field">
+    <span class="mt-4 p-float-label">
+      <input type="text" id="flight_id" disabled="true" pInputText [(ngModel)]="flight_id" />
+      <label for="flight_id">ID Рейса</label>
+    </span>
+  </div>
+  <div class="field">
+    <span class="mt-4 p-float-label">
+      <input type="text"  id="flight_no" pInputText [(ngModel)]="flight_no" />
+      <label for="flight_no">Номер рейса</label>
+    </span>
+  </div>
+  <div class="field">
+    <span class="mt-4 p-float-label">
+      <input type="text" id="aircraft_code" pInputText [(ngModel)]="aircraft_code" />
+      <label for="aircraft_code">Номер самолета2</label>
+    </span>
+  </div>
+  <div class="field">
+    <span class="mt-4 p-float-label">
+      <input type="text" id="departureAirport" pInputText [(ngModel)]="departure_airport" />
+      <label for="departureAirport">Вылет из аэропорта</label>
+    </span>
+  </div>
+  <div class="field">
+    <span class="mt-4 p-float-label">
+      <input type="text" id="departureTime" pInputText  [(ngModel)]="scheduled_departure"/>
+      <label for="departureTime">Время вылета</label>
+    </span>
+  </div>
+  <div class="field">
+    <span class="mt-4 p-float-label">
+      <input type="text" id="arrivalAirport" pInputText  [(ngModel)]="arrival_airport"/>
+      <label for="arrivalAirport">Посадка в аэропорт</label>
+    </span>
+  </div>
+  <div class="field">
+    <span class="mt-4 p-float-label">
+      <input type="text" id="timeArrival" pInputText  [(ngModel)]="scheduled_arrival"/>
+      <label for="timeArrival">Время посадки</label>
+    </span>
+  </div>
+  <button pButton icon="pi pi-check" (click)="editFlight(flight_id,
+             scheduled_departure,
+             scheduled_arrival,
+             flight_no,
+             departure_airport,
+             arrival_airport,
+             aircraft_code)" label="Сохранить" class="bSave p-button-rounded p-button-success"> </button>
+</div>
+
+<ng-template #unset>
+  <div class="field">
+    <span class="mt-4 p-float-label">
+      <input type="text"  pInputText  />
+      <label for="flight_id">ID Рейса</label>
+    </span>
+  </div>
+  <div class="field">
+    <span class="mt-4 p-float-label">
+      <input type="text"   pInputText  />
+      <label for="flight_no">Номер рейса</label>
+    </span>
+  </div>
+  <div class="field">
+    <span class="mt-4 p-float-label">
+      <input type="text"  pInputText  />
+      <label for="aircraft_code">Номер самолета</label>
+    </span>
+  </div>
+  <div class="field">
+    <span class="mt-4 p-float-label">
+      <input type="text"  pInputText  />
+      <label for="departureAirport">Вылет из аэропорта</label>
+    </span>
+  </div>
+  <div class="field">
+    <span class="mt-4 p-float-label">
+      <input type="text"  pInputText  />
+      <label for="departureTime">Время вылета</label>
+    </span>
+  </div>
+  <div class="field">
+    <span class="mt-4 p-float-label">
+      <input type="text"  pInputText  />
+      <label for="arrivalAirport">Посадка в аэропорт</label>
+    </span>
+  </div>
+  <div class="field">
+    <span class="mt-4 p-float-label">
+      <input type="text"  pInputText  />
+      <label for="timeArrival">Время посадки</label>
+    </span>
+  </div>
+  <button pButton icon="pi pi-check"  label="Сохранить" class="bSave p-button-rounded p-button-success"> </button>
+</ng-template>
+

@@ -1,0 +1,13 @@
+<form id="wrapped" [formGroup]="seatsModal">
+  <div class="iconform">
+    <div class="p-float-label float-number">
+      <p>Номер самолета</p>
+    <input class="aircraft-code" formControlName="aircraft_code" type="text" [value]="seatsModal.controls['code']"  pInputText />
+    </div>
+  </div>
+  <div class="p-float-label  float-seat">
+    <p class="p-float-label">Номер места</p>
+    <input class="seat-no" formControlName="seat_no"  type="text"  [value]="seatsModal.controls['nome']" pInputText />
+  </div>
+  <button type="button" class="p-button m-2" (click)="onSubmit()" [disabled]="!seatsModal.valid">Сохранить</button>
+</form>

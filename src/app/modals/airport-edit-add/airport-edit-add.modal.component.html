@@ -1,0 +1,24 @@
+<form  [formGroup]="fullNameControl">
+  <div class="p-field p-col-12 p-md-4">
+
+    <label>airport code</label>
+    <span class="p-float-label">
+    <input formControlName="airportCode" type="text" #ru [value]="fullNameControl.controls['airportCode']" pInputText />
+    </span>
+  </div>
+  <div class="p-field p-col-12 p-md-4">
+    <label class="p-float-label">ru</label>
+    <input formControlName="airportNameRu" type="text" #ru [value]="fullNameControl.controls['airportNameRu']" pInputText />
+  </div>
+  <div class="p-field p-col-12 p-md-4">
+    <label>en</label>
+    <span class="p-float-label">
+    <input formControlName="airportNameEn" type="text" #en [value]="fullNameControl.controls['airportNameEn']" pInputText />
+    </span>
+  </div>
+  <br>
+    <tr>
+    <td><button pButton icon="pi pi-info-circle" (click)="update(config.data['airport'].airport_code, ru.value, en.value)" label="Подтвердить" class="p-button-raised p-button-rounded"> </button></td>
+<!--    <td><button pButton icon="pi pi-info-circle" label="Закрыть" (click)="close()" class="p-button-raised p-button-rounded"></button></td>-->
+    </tr>
+</form>
